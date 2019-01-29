@@ -1,1 +1,1 @@
-// JavaScript File
+// Javascript-file
