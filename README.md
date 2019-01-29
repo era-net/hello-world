@@ -1,1 +1,3 @@
-# hello-world
+# Notizen
+
+* Bootstrap einbinden via getbootstrap.com
