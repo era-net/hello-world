@@ -246,6 +246,78 @@
             </div>
         </div>
 
+<br>
+<br>
+<br>
+<h2>31.01.2019 erwin</h2>
+        <!-- ========= 31.01.2019 ========= -->
+<!-- OUTPUT VARIABLES -->
+<?php
+  $txt = "blubb";
+  echo "i love $txt!"; // output text
+?>
+
+<br>
+
+<?php
+  $hey = "w3schools";
+  echo "i love " . $hey . "!";  // same as above
+?>
+
+<br>
+
+<?php
+  $x = 5;
+  $y = 4;
+  echo $x + $y; // puts out the sum of the two variables $x + $y
+?>
+
+<br>
+
+<!-- GLOBAL AND LOCAL SCOPE -->
+<?php
+  $x = 5; // global scope CAN ONLY BE ACCESSED OUTSIDE A FUNCTION !
+  function myTest() {
+    // using x inside this function will generate an error
+    echo "<p>Variable x inside function is: $x (==== ERROR created on purpose, to see the result.)</p>"; // ERROR =========== !
+  }
+  myTest(); // this line is just to call the function, so the browser displays the error
+    //echo "<p>Variable x inside function is: $x</p>"; ========= THIS LINE WOULD NOT DISPLAY AS AN ERROR BECAUSE THE VARIABLE WAS DECLARED BEFORE THE FUNCTION !
+?>
+
+<br>
+<!-- HOW TO ACCESS VARIABLES OUTSIDE FUNCTIONS THAN??? -->
+<?php
+  $x = 5;
+  function getVar() {
+    global $x; // keyword to access variables outside functions is «global» !
+
+    echo "<p>2 + 3 = " . $x . " !</p>";
+  }
+  getVar();
+?>
+<br>
+
+<!-- Learning by doing... -->
+<?php
+  $txt = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  echo "<h2>Manual</h2>";
+  echo "<p>text is: " . $txt . " !</p>";
+$num = 5;
+$num2 = 4;
+  echo "hello there, how are you $num";
+  echo "<br>";
+  echo $num + $num2;
+  echo "<br>";
+  echo "<p class=\"red\" id=\"blubb\">hello there</p>"; // Attributes "class" and "id" seems to not work here...
+  echo "<p title=\"blubb\">hey there</p>"; // Attribute "title" seems to works!
+?>
+
         <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; 2017-2018 Company Name</p>
             <ul class="list-inline">
