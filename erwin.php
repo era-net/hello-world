@@ -1001,8 +1001,1282 @@ echo "Status = " . $num->state;
 
 <br><br>
 <h4 class="orange">PHP 5 Constants</h4>
+<p>Constants are like variables except that once they are defined they cannot be changed or undefined.</p>
+<p><strong>Note:</strong> Unlike variables, constants are automatically global across the entire script.</p>
+
+<br><br>
+<h4>Create a PHP Constant</h4>
+<p>To create a Constant, use the <span class="red">define()</span> function.</p>
+<br><br>
+<h4>PHP constant Syntax</h4>
+<pre class="text-muted">define(name, value, case-insensitive)</pre>
+<p>Parameters</p>
+<ul>
+    <li>name: Specifies the name of the constant</li>
+    <li>value: Specifies the value of the constant</li>
+    <li>case-sensitive: Specifies wheter the constant name should be caseinsensitive. Default is false</li>
+</ul>
+
+<br><br>
+<h4>Example PHP Constant <strong>(case-sensitive)</strong></h4>
+<?php
+    define("GREETING", "Welcome to W3Schools.com!");
+    echo GREETING;
+?>
+<br><br>
+<h4>Example PHP Constant <strong>(case-insensitive)</strong></h4>
+<?php
+    define("GREETING", "Welcome to W3Schools.com!", true); // default is false so true means: case-insensitive
+    echo greeting; // case-insensitive
+?>
+<br><br>
+<h4>Constants are Global</h4>
+<p>Constants are automatically global and can be used across the entire script.</p>
+<br><br>
+<h4>Example Constants global</h4>
+<?php
+    define("GREETING2", "Welcome to W3Schools.com!");
+
+    function myTestConst() {
+        echo GREETING2; // Works through the entire script
+    }
+
+    myTestConst();
+?>
+
+<br><br>
+<h4>Testing, learning and exploring constants</h4>
+<?php
+    define("txt", "Some text.. Some text... Some text... Some text...");
+    echo txt . "<br>";
+    define("TXT2", "Hello there, hello there, hello there", true);
+    echo txt2;
+?>
+
+<br><br>
+<h4>Object repetition</h4>
+<?php
+    class Computer {
+        function Computer() {
+            $this->name = "acer";
+            $this->type = "xy";
+            $this->storage = "1tb";
+        }
+    }
+
+    $acer = new Computer();
+
+    echo $acer->type . "<br>"; // worked !
+    echo $acer->name . "<br>"; // worked !
+    echo $acer->storage; // worked !
+?>
+
+<br><br>
+<h4>Repetition Constants</h4>
+<?php
+    define("hello", "heheheheeh");
+    echo hello; // worked !
+    echo "<br>";
+    define("HEY", "hahahahaahah", true);
+    echo hey; // worked !
+?>
+
+<br><br>
+<h4>String repetition</h4>
+<?php
+    $s = "Peter was fishing yesterday!";
+    echo "string = " . $s . "<br>"; // worked
+    echo "chars = " . strlen($s) . "<br>"; // worked
+    echo "words = " . str_word_count($s) . "<br>"; // worked
+    echo "reverse = " . strrev($s) . "<br>"; // worked
+    echo "word position = " . strpos($s, "fishing") . "<br>"; // worked
+    echo "replace = " . str_replace("Peter", "Marc", $s) . "<br>"; // worked
+?>
 
 
+
+<br><br>
+<h4>Repetition Constants</h4>
+<?php
+    define("dog", "Husky");
+    echo dog . "<br>"; // worked!
+    define("DOG2", "Labrador", true); // case-insensitive
+    echo dog2; // worked!
+?>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 Operators</h4>
+<p>Operators are used, to perform operations on variables and values.</p>
+
+<p>PHP divides the operators in the following groups:</p>
+<ul>
+<li>Arithmetic operators</li>
+<li>Assignment operators</li>
+<li>Comparison operators</li>
+<li>Increment/ Decrement operators</li>
+<li>Logical operators</li>
+<li>String operators</li>
+<li>Array operators</li>
+</ul>
+
+<p><strong>Note:</strong> Operators in PHP are mostly the same as in JavaScript but there are a few exeptions.</p>
+
+<p>Link to a detailed operator list: <a href="https://www.w3schools.com/php/php_operators.asp">PHP Operators</a></p>
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 if...else...elseif Statements</h4>
+<p>Conditional statements are used to perform different actions based on different conditions.</p>
+
+<p>Very often when you write code, you want to perform different actions for different conditions. You can use conditional statements in your code to do this.</p>
+
+<p>In PHP we have the following conditional statements:</p>
+<ul>
+    <li><span class="red">if</span> statement - executes some code if one condition is true</li>
+    <li><span class="red">if...else</span> statement - executes some code if a condition is true and another code if that condition is false</li>
+    <li><span class="red">if...elseif...else</span> statement - executes different codes for more than two conditions</li>
+    <li><span class="red">switch</span> statement - selects one of many blocks of code to be executed</li>
+</ul>
+
+
+<br><br>
+<h4>PHP - The if Statement</h4>
+<p>The <span class="red">if</span> statement executes some code if one condition is true.</p>
+
+<br><br>
+<h4>The if Statement example</h4>
+<?php
+    $t = date("H");
+    echo $t;
+    echo "<p>Learn more about the <a href='https://www.w3schools.com/php/php_date.asp'>PHP date function</a> here.</p>";
+    if ($t < "20") { // if hours less than 20
+        echo "Have a good day!"; // display this
+    } // else, automatically nothing will be displayed (in JavaScript it's the same concept)
+
+    echo "<br><br>";
+
+    echo "<h4>The if Statement my example</h4>";
+    $b = 12;
+    if ($b > 10) { // if $b is higher than 10
+        echo "12 is higher than 10"; // true, display this
+    }
+    echo "<br><br>";
+    $g = 17;
+    if ($g < 20) { // if $g is less than 20
+        echo "17 is less than 20"; // true, display this
+    }
+    echo "<br><br>";
+    $z = 5;
+    if ($z < 2) { // if $z is less than 2
+        echo "5 is less than 2"; // false, nothing will be displayed !
+    }
+
+    echo "<br><br>";
+    $j = 100;
+    if ($j > 125) { // if $j is bigger than 125
+        echo "125 is less than 100"; // false, nothing will be displayed !
+    }
+?>
+
+
+<br><br>
+<h4>PHP - The if...else Statement</h4>
+<p>The <span class="red">if...else</span> statement executes some code if a condition is true and another code if that condition is false.</p>
+
+<br><br>
+<h4>The if...else Statement example</h4>
+<?php
+    $t = date("H");
+
+    if ($t < "20") {                // if $t less than 20
+        echo "Have a good day!";    // display this !
+    } else {                        // else
+        echo "have a good night!";  // display this !
+    }
+?>
+
+
+<br><br>
+<h4>The if...else Statement my example</h4>
+<?php
+    echo "<p>s = 50</p>";
+    $s = 50;
+    echo "<p>if s is higher than 10, do something</p>";
+
+    if ($s > 52) {
+        echo "<p class='red'>s is higher than 10. Do this</p>";
+    } else {
+        echo "<p class='red'>s is smaller than 60. Do this</p>";
+    }
+?>
+
+
+<br><br>
+<h4>The if...elseif...else Statement</h4>
+<p>The <span class="red">if...elseif...else</span> statement executes different codes for more than two conditions.</p>
+
+
+<br><br>
+<h4>The if...elseif...else Statement example</h4>
+<?php
+    $t = date("H");
+
+    if ($t < "10") {
+        echo "have a good morning!";
+    } elseif ($t < "20") {
+        echo "have a good day!";
+    } else {
+        echo "have a good night!";
+    }
+?>
+
+
+
+<br><br>
+<h4>Repetition if...elseif...else Statement</h4>
+<?php
+    $f = 23;
+
+    if ($f < 20) {
+        echo "17 is less than 20!"; // worked
+    } elseif ($f == 17) {
+        echo "17 is equal to 17!"; // worked
+    } else {
+        echo "none..."; // worked
+    }
+?>
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 switch Statement</h4>
+<p>The <span class="red">switch</span> statement is used to perform different actions based on different conditions.</p>
+<p>Use the <span class="red">switch</span> statement to <strong>select one of many blocks of code to be executed.</strong></p>
+
+<br>
+<p>This is how it works: First we have a single expression (most often a variable), that is evaluated once. The value of
+the expression is then compared with the values for each case in the structure. If there is a match, the block of code 
+associated with that case is executed. Use <span class="red">break</span> to prevent the code from running into the next case automatically.<br>
+The <span class="red">default</span> statement is used, if no match is found.</p>
+
+<br><br>
+<h4>Switch Statement example</h4>
+<?php
+    $favcol = "red";
+
+    switch ($favcol) {
+        case "red":
+            echo "your favourite color is red!";
+            break;
+        case "blue":
+            echo "your favourite color is blue!";
+            break;
+        case "green":
+            echo "your favourite color is green!";
+            break;
+        default:
+            echo "your favourite color is neither red, blue, nor green!";
+    }
+?>
+
+
+<br><br>
+<h4>Repetition Switch Statement</h4>
+<?php
+    $dog = "Labrador";
+
+    switch($dog){
+        case "Husky":
+            echo "you have a Husky";
+            break;
+        case "Labrador":
+            echo "you have a Labrador";
+            break;
+        case "German Shep.":
+            echo "you have a German Shep.!";
+        default:
+            echo "you have none of the available types...";
+    }
+
+echo "<br><br>";
+
+
+    $car = "Audi";
+
+    switch($car) {
+        case "Audi":
+            echo "you have an Audi";
+            break;
+        case "Mercedes":
+            echo "you have a Mercedes";
+            break;
+        case "BMW":
+            echo "you have a BMW";
+            break;
+        default:
+            echo "you have none of these cars";
+    }
+
+echo "<br><br>";
+// without watching
+    $day = date("l");
+    
+    switch($day) {
+        case "Thursday":
+            echo "today is " . $day; // works !
+            break;
+        case "Friday":
+            echo "today is " . $day; // works !
+            break;
+        case "Saturday":
+            echo "today is " . $day; // works !
+            break;
+        case "Sunday":
+            echo "today is " . $day; // works !
+            break;
+        case "Monday":
+            echo "today is " . $day; // works !
+            break;
+        case "Tuesday":
+            echo "today is " . $day; // works !
+            break;
+        case "Wednesday":
+            echo "today is " . $day; // works !
+            break;
+        default:
+            echo "<p class='red'>unknown error occured! please try later</p>"; // works !
+    }
+?>
+
+
+
+
+
+
+<br><br>
+<h4 class="orange">Repetition [08.02.2019]</h4>
+<br><br>
+<h4>if...else...elseif Statement</h4>
+<?php
+    $g = date("H");
+    
+    if ($g > 20) {
+        echo "Good night!"; // worked !
+    } else {
+        echo "have a great day!";   // worked !
+    }
+    echo "<br><br>";
+
+    if ($g < 12) {
+        echo "Good morning!";   // worked !
+    } elseif ($g > 20) {
+        echo "Good night!"; // worked !
+    } else {
+        echo "Have a great day!";   // worked !
+    }
+?>
+
+
+
+<br><br>
+<h4>Switch Statement</h4>
+<?php
+    $cars = "Audi";
+
+    switch ($cars) {
+        case "Audi":
+            echo "I have an Audi"; // worked !
+            break;
+        case "BMW":
+            echo "I have a BMW"; // worked !
+            break;
+        case "Mercedes":
+            echo "I have a Mercedes"; // worked !
+            break;
+        default:
+            echo "I have none of these cars..."; // worked !
+    }
+?>
+
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 while Loops</h4>
+<p>PHP While loops execute a block of code while the specified condition is true.</p>
+<p>Often when you write code, you want the same block of code to run over and over again in a row. 
+Instead of adding several almost equal code-lines in a script, we can use loops to perform a task like this.</p>
+<p>In PHP, we have the following looping statements:</p>
+
+<ul>
+    <li><span class="red">while</span> - loops through a block of code as long as the specified condition is true</li>
+    <li><span class="red">do...while</span> - loops through a block of code once, and then repeats the loop as long as the specified condition is true</li>
+    <li><span class="red">for</span> - loops through a block of code a specified number of times</li>
+    <li><span class="red">foreach</span> - loops through a block of code for each element in an array</li>
+</ul>
+
+<br><br>
+<h4>The PHP while Loop</h4>
+<p>The <span class="red">while</span> loop executes a block of code as long as the specified condition is true.</p>
+
+<br><br>
+<h4>While Loop example</h4>
+<?php
+    $x = 1;
+
+    while($x <= 5) {
+        echo "The number is: $x <br>";
+        $x++;
+    }
+
+    echo "<br><br>";
+
+    $s = 0;
+    while ($s < 10) {
+        echo "Hello World ! <br>";
+        $s++;
+    }
+
+    echo "<br><br>";
+
+    $f = 1;
+    while ($f < 11) {
+        echo "$f. " . "blubb <br>";
+        $f++;
+    }
+?>
+
+
+<br><br>
+<h4>While Loop repetition (without watching)</h4>
+<?php
+    $h = 1;
+    while ($h < 6) {
+        echo "$h. " . "hehe <br>"; // worked !
+        $h++;
+    }
+?>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 do...while loop</h4>
+<p>The <span class="red">do...while</span> loop will always wxecute the block of code once, it will then check the condition, and repeat the loop while the specified condition is true.</p>
+
+<br><br>
+<h4>do...while Loop example</h4>
+<?php
+    $x = 1;
+    do {
+        echo "The number is: $x <br>";
+        $x++;
+    } while ($x <= 5); 
+?>
+
+
+<br><br>
+<h4>Difference between <span class="red">while</span> and <span class="red">do...while</span></h4>
+<p>The difference between the <span class="red">while</span> and <span class="red">do...while</span> loop is, 
+that the <span class="red">do...while</span> loop will run the code 1 time no matter if the condition is true or not. The 
+<span class="red">while</span> loop will not run any code, if the condition is false.</p>
+
+<br><br>
+<h4>Difference between <span class="red">while</span> and <span class="red">do...while</span> example</h4>
+<?php
+    $x = 0;
+
+    while ($x < 0) {
+        echo "<p class='v'>While example</p>"; // code will not be run !
+        $x++;
+    }
+
+    do {
+        echo "<p class='v'>Do...while example</p>"; // code will be run 1 time although the condition is false !
+    } while ($x < 0);
+?>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 for loops</h4>
+<p>The <span class="red">for</span> loop in PHP is built in the same way as in JavaScript so i don't have to do this again.</p>
+
+
+
+
+<br><br>
+<h4 class="orange">The PHP 5 foreach Loop</h4>
+<p>The <span class="red">foreach</span> loop works only on arrays, and is used to loop through each key/ value pair in an array.</p>
+
+
+
+
+<br><br>
+<h4>PHP foreach Loop Syntax</h4>
+<pre class="text-muted">
+foreach ($array as $value) {
+<span class="ml-3">// code to be executed;</span>
+}
+</pre>
+<p>For every loop iteration, the value of the current array element is assigned to $value and the array<br>pointer is moved by one, until it reaches the last array element.</p>
+
+
+<br><br>
+<h4>PHP foreach Loop example</h4>
+<?
+    $colors = array("red", "green", "blue", "yellow");
+
+    foreach ($colors as $value) {
+        echo "$value <br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>PHP foreach Loop learning</h4>
+<?php
+    $colors = array("yellow", "green", "blue", "red");
+
+    foreach ($colors as $value) {
+        echo "$value <br>";
+    }
+
+    echo "<br><br>";
+
+    $cars = array("BMW", "Audi", "Mercedes");
+
+    foreach ($cars as $value) {
+        echo "$value <br>";
+    }
+
+    echo "<br><br>";
+
+    $somVal = array("P", "H", "p", "i", "s", "f", "u", "n", ":)", ":)", ":P", ":)");
+
+    foreach ($somVal as $value) {
+        echo "$value <br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>PHP foreach Loop learning (without watching)</h4>
+<?php
+    $cols = array("green", "red", "blue", "yellow", "brown", "black", "blue");
+    $x = 1;
+
+    foreach ($cols as $value) {
+        echo "$x. $value <br>";
+        $x++; // just figured out, how you can add numbers in front too...
+    }
+?>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 Functions</h4>
+<p>The real power of PHP comes from its functions. PHP has mor than 1000 built-in functions.</p>
+
+<br><br>
+<h4>Create a User Defined Function in PHP</h4>
+<p>A user-defined function declaration starts with the word <span class="red">function</span>. (same in JavaScript)</p>
+<p><mark><strong>Note:</strong> Function names are not case sensitive!</mark></p>
+
+
+<br><br>
+<h4>User Defined Function example</h4>
+<?php
+    function writeMsg() {
+        echo "Hello world!";
+    }
+
+writeMsg(); // call the function
+?>
+
+
+
+
+<br><br>
+<h4>PHP foreach repetition</h4>
+<?php
+    $cars = array("BMW", "Mercedes", "Audi");
+
+    foreach ($cars as $value) {
+        echo "$value <br>"; // worked !
+    }
+?>
+
+
+
+
+<br><br>
+<h4>PHP Function Arguments</h4>
+<p>Information can be passed to functions through arguments. An argument is just like a variable.</p>
+<p>Arguments are specified after the function name, inside the parentheses. You can add as many arguments as you want, just separate them with a comma.</p>
+
+
+<br><br>
+<h4>PHP Function Arguments example</h4>
+<?php
+    function familyName($fname) {
+        echo "$fname Refsnes.<br>";
+    }
+familyName("Jani");
+familyName("Hege");
+familyName("Stale");
+familyName("Kai Jim");
+familyName("Borge");
+?>
+
+
+<br><br>
+<p>Same with 2 Arguments</p>
+<?php
+    function listFnameYear($fname, $year) {
+        echo "Mr./ Mrs. $fname. Born in $year <br>";
+    }
+
+listFnameYear("Mc Gregor", "1985");
+listFnameYear("Heeb", "1999");
+listFnameYear("Brown", "1968");
+?>
+
+
+<br><br>
+<h4>PHP Default Argument Value</h4>
+<p>The following example shows how to use a default parameter. If we call the function setHeight() without arguments it takes the default value as argument:</p>
+
+<br><br>
+<h4>PHP Default argument Value example</h4>
+<?php
+    function setHeight($minheight = 50) {
+        echo "The height is : $minheight <br>";
+    }
+setHeight(350);
+setHeight(); // will use the default value of 50
+setHeight(135);
+setHeight(80);
+?>
+
+
+
+
+<br><br>
+<h4>User defined function repetition</h4>
+<?php
+    function myFunction($name, $year) {
+        echo "My name is $name, i'm born in $year ! <br>";
+    }
+myFunction("Marc", "1995"); // worked !
+myFunction("Lilly", "1998"); // worked !
+myFunction("Brandon", "1963"); // worked !
+myFunction("Amanda", "1996"); // worked !
+myFunction("John", "1977"); // worked !
+?>
+
+<br><br>
+<p>Let's try the same with a default name and default year...</p>
+
+<?php
+    function theFunction($name = "John", $year = "1993") {
+        echo "My name is $name, i'm born in $year! <br>";
+    }
+theFunction(); // perfect, it worked !
+?>
+
+
+
+
+<br><br>
+<h4>Switch statement repetition</h4>
+<?php
+    $someval = "grey";
+    switch ($someval) {
+        case "black":
+            echo "Your color is $someval !"; // works !
+            break;
+        case "grey":
+            echo "Your color is $someval !"; // works !
+            break;
+        case "green":
+            echo "Your color is $someval !"; // works !
+            break;
+        default:
+            echo "None of these colors is your color..."; // works !
+    }
+?>
+
+
+
+
+<br><br>
+<h4>PHP Functions - Returning values</h4>
+<p>To let a function return a value, us the <span class="red">return</span> statement.</p>
+
+<br><br>
+<h4>Returning values example</h4>
+<?php
+    function sum($x, $y) {
+        $z = $x + $y;
+        return $z;
+    }
+echo "5 + 10 = " . sum(5, 10) . "<br>";
+echo "7 + 13 = " . sum(7, 13) . "<br>";
+echo "2 + 4 = " . sum(2, 4);
+?>
+
+
+
+
+<br><br>
+<h4>Returning values own example</h4>
+<?php
+    function calc($length, $width) {
+        $m2 = $length * $width;
+        return $m2;
+    }
+    echo "m2 = " . calc(5, 5) . "<br>"; // worked
+    echo "m2 = " . calc(50, 30) . "<br>"; // worked
+?>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 Arrays</h4>
+<p>An array stores multiple values in one single variable:</p>
+<br><br>
+<h4>Example</h4>
+<pre class="text-muted">
+$cars = array("Volvo", "BMW", "Toyota");
+echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+</pre>
+
+<br><br>
+<h4>Result from example above</h4>
+<?php
+    $cars = array("Volvo", "BMW", "Toyota");
+    echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+?>
+
+
+
+
+<br><br>
+<h4>Create an Array in PHP</h4>
+<p>In PHP, the <span class="red">array()</span> function is used to create an array.</p>
+<p>In PHP, there are three types of arrays:</p>
+<ul>
+    <li><strong>indexed arrays</strong> - Arrays with a numeric index</li>
+    <li><strong>Associative arrays</strong> - Arrays with named keys</li>
+    <li><strong>Multidimensional arrays</strong> - Arrays containing one or more arrays</li>
+</ul>
+
+
+<br><br>
+<h4>PHP Indexed Arrays</h4>
+<p>There are two ways to create indexed arrays:</p>
+<h4>Method 1</h4>
+<p>Here the index is assigned automatically:</p>
+<pre class="text-muted">
+    $cars = array("Volvo", "BMW", "Toyota");
+</pre>
+
+<h4>Method 2</h4>
+<p>Here the index is assigned manually:</p>
+<pre class="text-muted">
+    $cars[0] = "Volvo";
+    $cars[1] = "BMW";
+    $cars[2] = "Toyota";
+</pre>
+
+
+
+
+<br><br>
+<h4>Get The Length of an Array - The count() Function</h4>
+<p>The <span class="red">count()</span> function is used to return the length (the number of elements) of an array:</p>
+
+
+<br><br>
+<h4>count() Function example</h4>
+<?php
+    $cars = array("Volvo", "BMW", "Audi", "Toyota", "VW");
+    echo count($cars);
+?>
+
+
+
+
+<br><br>
+<h4>Loop Through an Indexed Array</h4>
+<p>To loop through and print all the values of an indexed array, you could use a <span class="red">for</span> loop, like this:</p>
+<h4>Example</h4>
+<?php
+    $cars = array("Volvo", "BMW", "Toyota");
+    $arrlength = count($cars);
+    for ($x = 0; $x < $arrlength; $x++) {
+        echo $cars[$x];
+        echo "<br>";
+    }
+?>
+
+
+
+<br><br>
+<h4>Loop through an Indexed Array (for-method) - selfmade example</h4>
+<?php
+    $drinks = array("Ice Tea", "Vodka", "Whisky", "Coca Cola", "Fusetea", "Arizona", "Capri-sun");
+    $drlen = count($drinks);
+    for ($x = 0; $x < $drlen; $x++) {
+        echo $drinks[$x] . "<br>"; // worked !
+    }
+?>
+
+<br><br>
+<h4>Loop through an Indexed Array (foreach-method) - selfmade example</h4>
+<?php
+    $drinks = array("Ice Tea", "Vodka", "Whisky", "Coca Cola", "Fusetea", "Arizona", "Capri-sun");
+    foreach ($drinks as $value) {
+        echo $value . "<br>"; // worked !
+    }
+?>
+
+
+<br><br>
+<h4>PHP Associative Arrays</h4>
+<p>Associative arrays are arrays that use named keys that you assign to them.</p>
+<p>There are two ways to create an associative array.</p>
+<h4>Method 1</h4>
+<pre class="text-muted">
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+</pre>
+<h4>Method 2</h4>
+<pre class="text-muted">
+    $age["Peter"] = "35";
+    $age["Ben"] = "37";
+    $age["Joe"] = "43";
+</pre>
+<p>The named keys can be used in a script.</p>
+<h4>Example</h4>
+<?php
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    echo "Peter is " . $age["Peter"] . " years old.";
+?>
+
+
+
+<br><br>
+<h4>PHP Associative Arrays - selfmade example</h4>
+<?php
+    echo "<h4>Method 1</h4>";
+    $element = array("width" => "30", "length" => "50", "height" => "40");
+    echo "<p>Element Information</p>";
+    echo "width = " . $element["width"] . "<br>";
+    echo "length = " . $element["length"] . "<br>";
+    echo "height = " . $element["height"] . "<br><br>";
+
+    echo "<h4>Method 2</h4>";
+    $element2["width"] = "30";
+    $element2["length"] = "50";
+    $element2["height"] = "40";
+    echo "width = " . $element2["width"] . "<br>";
+    echo "length = " . $element2["length"] . "<br>";
+    echo "height = " . $element2["height"];
+
+    echo "<br><br>";
+    echo "<h4>Loop through</h4>";
+    $el2len = count($element2);
+    $x = 0;
+    for ($x; $x < $el2len; $x++) {
+        echo $element2[$x] . "<br>"; // oops...!
+    }
+    // what went wrong?
+    echo $element2[1]; // this is, what went wrong. It is not a indexed array any more. $x is not a numeric value, wich can't be read.
+    echo "<br><br>";
+    echo $element2["length"]; // this works, because i gave it the correct value to look for. There's a reason, why it's called ASSOCIATIVE ARRAY !
+?>
+<p>As soon as you declare an array the ASSOCIATIVE-way, there is no numeric index numbers any more. The arrays are then called by the value you gave it.</p>
+<p>To loop through an ASSOCIATIVE ARRAY, you have to use the <span class="red">foreach</span> method wich will be seen in the next chapter!</p>
+
+
+
+
+<br><br>
+<h4>Loop Through an Associative Array</h4>
+<p>To loop through and print all the values of an associative array, you could use a <span class="red">foreach</span> loop, like this:</p>
+<h4>Syntax</h4>
+<pre class="text-muted">
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+
+    foreach($age as $x => $x_value) {
+        echo "Key=" . $x . ", Value=" . $x_value;
+        echo "&lt;br&gt;";
+    }
+</pre>
+
+<br>
+<h4>Example</h4>
+<?php
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+
+    foreach($age as $x => $x_value) {
+        echo "Key=" . $x . ", Value=" . $x_value;
+        echo "<br>";
+    }
+?>
+
+
+<br><br>
+<h4>Own Example</h4>
+<?php
+    $cars = array("BMW" => "300ps", "Mercedes" => "450ps", "Audi" => "500ps");
+
+    foreach($cars as $key => $key_value) {
+        echo "Key = " . $key . ", Value = " . $key_value;
+        echo "<br>";
+    }
+    echo "<br><br>";
+
+    echo "<h4>Own Example 2</h4>";
+    $drinks = array("Vodka" => "35% vol", "Whiskey" => "45% vol", "Coca Cola" => "0% vol");
+    foreach ($drinks as $drinksKey => $drinksKey_value) {
+        echo "Key = " . $drinksKey . ", Value = " . $drinksKey_value . "<br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>Multidimensional Arrays</h4>
+<p><a href="https://www.w3schools.com/php/php_arrays_multi.asp">Multidimensional arrays</a> will be explained in the PHP advanced section.</p>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 Sorting Arrays</h4>
+<p>The Elements in an array can be sorted in alphabetical or numerical order, descending or ascending.</p>
+<p><mark><strong>Note:</strong> ascending = aufsteigend</mark></p>
+<p><mark><strong>Note:</strong> descending = absteigend</mark></p>
+
+
+
+
+<br><br>
+<h4>PHP - Sort Functions For Arrays</h4>
+<p>In this chapter, we will go through the following PHP array sort functions:</p>
+<ul>
+    <li><span class="red">sort()</span> - sort arrays in ascending order</li>
+    <li><span class="red">rsort()</span> - sort arrays in descending order</li>
+    <li><span class="red">asort()</span> - sort associative arrays in ascending order, according to the value</li>
+    <li><span class="red">ksort()</span> - sort associative arrays in ascending order, according to the key</li>
+    <li><span class="red">arsort()</span> - sort associative arrays in descending order, according to the value</li>
+    <li><span class="red">krsort()</span> - sort associative arrays in descending order, according to the key</li>
+</ul>
+
+
+
+
+<br><br>
+<h3 class="red">======== <strong>IMPORTANT: </strong>This part needs more efficient repetition !!! ========</h3>
+<br>
+<h4>Sort Array in Ascending Order - sort()</h4>
+<p>The following example sorts the elements of the $cars array in ascending alphabetical order:</p>
+<h4>Syntax</h4>
+<pre class="text-muted">
+    $cars = array("Volvo", "BMW", "Toyota");
+    sort($cars);
+</pre>
+<h4>Example</h4>
+<?php
+    $cars = array("Volvo", "BMW", "Toyota");
+    sort($cars);
+
+    $carlen = count($cars);
+
+    for ($x = 0; $x < $carlen; $x++) {
+        echo $cars[$x] . "<br>"; // ascending alphabetical output !
+    }
+?>
+<br><br>
+<p>The following example sorts the elements of the $nums array in ascending numerical order:</p>
+<?php
+    $nums = array(4, 5, 2, 8, 9, 10);
+    sort($nums);
+
+    $numlen = count($nums);
+
+    for ($x = 0; $x < $numlen; $x++) {
+        echo $nums[$x] . "<br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>Testing, exploring and learning the sort() function</h4>
+<?php
+    $names = array("Brandon", "Eddie", "Marcus", "Brad", "Halie", "Marie", "Asmir", "Joe", "John", "Alissa", "Muhammad");
+    sort($names);
+
+    $namlen = count($names);
+
+    for($x = 0; $x < $namlen; $x++) {
+        echo $names[$x] . "<br>"; // worked !
+    }
+
+    echo "<br><br>";
+
+    $drinks = array("Vodka", "Coca Cola", "Whiskey", "Ice-Tea");
+    sort($drinks);
+
+    $drilen = count($drinks);
+
+    for ($x = 0; $x < $drilen; $x++) {
+        echo $drinks[$x] . "<br>"; // worked !
+    }
+
+    echo "<br><br>";
+
+    $nums = array(5, 6, 7 , 3, 1, 9, 10, 20, 120, 200, 250, 3059);
+    sort($nums);
+
+    $numlen = count($nums);
+
+    for($x = 0; $x < $numlen; $x++) {
+        echo $nums[$x] . "<br>"; // worked !
+    }
+?>
+
+
+<br><br>
+<h4>Array sort() repetition</h4>
+<?php
+    $smtng = array("hey", "what", "where", "in", "on", "off", "crazy", "PHP", "ahaha");
+    sort($smtng);
+
+    $smtlen = count($smtng);
+
+    for($x = 0; $x < $smtlen; $x++) {
+        echo $smtng[$x] . "<br>"; // worked !
+    }
+?>
+
+
+
+
+<br><br>
+<h4>Sort Array in Descending Order - rsort()</h4>
+<p>The following example sorts the elements of the $cars array in descending alphabetical order:</p>
+<h4>Example</h4>
+<?php
+    $cars = array("Volvo", "BMW", "Toyota");
+    rsort($cars);
+
+    $carlen = count($cars);
+
+    for ($x = 0; $x < $carlen; $x++) {
+        echo $cars[$x] . "<br>";
+    }
+?>
+<br>
+<p><mark><strong>Note :</strong> practically everything is the same just instead of calling the <span class="v">sort()</span> function, call the <span class="red">rsort()</span> function</mark></p>
+<p><mark><span class="v">sort()</span> = ascending order !</mark><br>
+<mark><span class="red">rsort()</span> = descending order !</mark></p>
+
+
+
+
+<br><br>
+<h4>Sort Array (Ascending Order), According to Value - asort()</h4>
+<p>The following example sorts an associative array in ascending order, according to the <mark>value</mark>:</p>
+<?php
+    // let's try this without looking it up first
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    asort($age);
+
+    foreach ($age as $key => $key_value) {
+        echo "key = " . $key . ", value = " . "<span class='red'>" . $key_value . "</span>"; // YES ! I did it!!!
+        echo "<br>";
+    }
+?>
+
+
+<br><br>
+<h4>Sort Array (Ascending Order), According to Key - ksort()</h4>
+<p>The following example sorts an associative array in ascending order, according to the <mark>key</mark>:</p>
+<?php
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    ksort($age);
+
+    foreach ($age as $x => $x_value) {
+        echo "key = " . "<span class='red'>" . $x . "</span>, value = " . $x_value . "<br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>Sort Array (Descending Order), According to Value - arsort()</h4>
+<p>The following example sorts an essociative array in descending order, according to the <mark>value</mark>:</p>
+<?php
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    arsort($age);
+
+    foreach ($age as $x => $x_value) {
+        echo "key = " . $x . ", value = <span class='red'>" . $x_value . "</span><br>";
+    }
+?>
+
+
+
+
+<br><br>
+<h4>Sort Array (Descending Order), According to Key - krsort()</h4>
+<p>The following example sorts an associative array in descending order, according to the <mark>key</mark>:</p>
+<?php
+    $age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+    krsort($age);
+
+    foreach ($age as $x => $x_value) {
+        echo "key = <span class='red'>" . $x . "</span>, value = " . $x_value . "<br>";
+    }
+?>
+<br><br>
+<h3 class="red">I kind a mixed this part up in my head. Need to go back over it again some time !!</h3>
+
+
+
+
+<br><br>
+<h4 class="orange">PHP 5 Global Variables - Superglobals</h4>
+<p>Suberglobals were introduced in PHP 4.1.0, and are built-in variables that are always available in all scopes.</p>
+<p>Several predefined variables in PHP are "superglobals", wich means that they are always accessible, regardless of scope - and you can access them 
+from any function, class or file without having to do anything special.</p>
+
+<p>The PHP superglobal variables are:</p>
+<ul>
+<li>$GLOBALS</li>
+<li>_SERVER</li>
+<li>_REQUEST</li>
+<li>_POST</li>
+<li>_GET</li>
+<li>_FILES</li>
+<li>_ENV</li>
+<li>_COOKIE</li>
+<li>_SESSION</li>
+</ul>
+<p>This chapter will explain some of the superglobals, and the rest will be explained in later chapters.</p>
+
+
+
+<br><br>
+<h4>PHP $GLOBALS</h4>
+<p>$GLOBALS is a PHP super global variable wich is used to access global variables from anywhere in the PHP script (also from within functions or methods).</p>
+<p>PHP stores all global variables in an array called $GLOBALS[<i>index</i>].<br>
+The <i>index</i> holds the name of the variable.</p>
+<p>The example below shows how to use the superglobal variable $GLOBALS:</p>
+<br>
+<h4>Example</h4>
+<?php
+    $x = 75;
+    $y = 25;
+
+    function addition() {
+        $GLOBALS["z"] = $GLOBALS["x"] + $GLOBALS["y"];
+    }
+    addition();
+    echo $z; // result = 100
+?>
+<p>In the example above, since z is a variable present within the $GLOBALS array, it is also accessible from outside the function!</p>
+
+
+
+
+<br><br>
+<h4>PHP $_SERVER</h4>
+<p>$_SERVER is a PHP super global variable wich holds information about headers, paths, and script locations.</p>
+<p>The example below shows how to use some of the elements in $_SERVER:</p>
+<br>
+<h4>Syntax</h4>
+<pre class="text-muted">
+    echo $_SERVER["PHP_SELF"];
+    echo "&lt;br&gt;";
+    echo $_SERVER["SERVER_NAME"];
+    echo "&lt;br&gt;";
+    echo $_SERVER["HTTP_HOST"];
+    echo "&lt;br&gt;";
+    echo $_SERVER["HTTP_REFERER"];
+    echo "&lt;br&gt;";
+    echo $_SERVER[HTTP_USER_AGENT];
+    echo "&lt;br&gt;";
+    echo $_SERVER["SCRIPT_NAME"];
+</pre>
+
+<br>
+<h4>Example</h4>
+<?php
+    echo "PHP_SELF: " . $_SERVER["PHP_SELF"];
+    echo "<br>";
+    echo "SERVER_NAME: " . $_SERVER["SERVER_NAME"];
+    echo "<br>";
+    echo "HTTP_HOST: " . $_SERVER["HTTP_HOST"];
+    // echo "<br>";
+    // echo "HTTP_REFERER: " . $_SERVER["HTTP_REFERER"]; === This cannot work, because i'm in localhost mode
+    echo "<br>";
+    echo "HTTP_USER_AGENT: " . $_SERVER["HTTP_USER_AGENT"];
+    echo "<br>";
+    echo "SCRIPT_NAME: " . $_SERVER["SCRIPT_NAME"];
+?>
+<br><br>
+<p>Link to most important <a href="https://www.w3schools.com/php/php_superglobals.asp">$_SERVER</a> methods.</p>
+
+
+
+
+<br><br>
+<h4>PHP $_REQUEST</h4>
+<p>PHP $_REQUEST is used to collect data after submitting an HTML form.</p>
+<p>The example below shows a form with an input field and a submit button.<br>
+When a user submits the data by clicking on "Submit", the form data is sent to the file specified in the action attribute of the &lt;form&gt; tag. In this example,
+we point to this file itself for processing form data. If you wish, to use another PHP file to process form data, replace that with the filename of your choice.
+Then, we can use the super global variable $_REQUEST to collect the value of the input field:</p>
+
+<form action="erwin.php" method="get">
+    Name: <input type="text" name="fname">
+    <input type="submit">
+</form>
+
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        // collect value of input field
+        $name = $_REQUEST["fname"];
+        if (empty($name)) {
+            echo "Name is empty";
+        } else {
+            echo $name;
+        }
+    }
+?>
+
+<br><br>
+<p>go to my <a href="http://localhost/hello-world/request.php?firstname=Sample+Firstname&lastname=Sample+Lastname&street=Sample+Street&city=Sample+City">own $_REQUEST example</a> !</p>
 
 
 
