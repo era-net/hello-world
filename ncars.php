@@ -31,13 +31,28 @@
 <body class="bg-light">
 
 
-
     <div class="container">
   <div class="py-5">
     <h2>Car registration form</h2>
 
     <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     
+    <?php
+      //var_dump($_GET);
+
+      require "nconnect.php";
+
+      if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        if (!empty($_GET['brand']) && !empty($_GET['car_type']) && !empty($_GET['body_type']) && !empty($_GET['fuel'])) {
+          require "ncreate.php";
+        }
+      }
+
+      require "nread.php";
+      
+    ?>
+
+
   </div>
 
   <div class="row">
@@ -48,31 +63,31 @@
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="brand">Brand  </label>
+            <label for="brand">Brand * </label>
             <input type="text" class="form-control" id="brand" placeholder="e.g. Audi" value="" required name="brand">
             <div class="invalid-feedback">
               Valid brand is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="type">Type</label>
-            <input type="text" class="form-control" id="type" placeholder="e.g. A6" value="" required name="type">
+            <label for="car_type">Car type *</label>
+            <input type="text" class="form-control" id="car_type" placeholder="e.g. A6" value="" required name="car_type">
             <div class="invalid-feedback">
-              Valid type is required.
+              Valid car type is required.
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="body_type">Body type  </label>
+            <label for="body_type">Body type * </label>
             <input type="text" class="form-control" id="body_type" placeholder="e.g. Coupe" value="" required name="body_type">
             <div class="invalid-feedback">
               Valid body type is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="fuel">Fuel</label>
+            <label for="fuel">Fuel *</label>
             <input type="text" class="form-control" id="fuel" placeholder="e.g. Diesel" value="" required name="fuel">
             <div class="invalid-feedback">
               Valid car fuel is required.
@@ -113,7 +128,7 @@
             </div>
           </div>
         </div>    
-                         
+
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue the registration</button>
       </form>
