@@ -1,15 +1,17 @@
+
 <?php
+
 
     try {
         // get all cars from database
-        $stmt = $conn->prepare("SELECT * FROM cars"); 
+        $stmt = $conn->prepare("SELECT * FROM cars ORDER BY updated DESC"); 
         $stmt->execute();
 
         // set the resulting array to associative
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
         $cars = $stmt->fetchAll();
 
-        //var_dump($cars);
+        //var_dump($_GET);
 
         echo "<table class='table table-striped table-bordered table-hover'>";
         echo "<thead>
@@ -23,20 +25,31 @@
                     <th>HP</th>
                     <th>Mileage</th>
                     <th>Updated</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>";
         foreach ($cars as $key => $value) {
             echo "<tr>
-                    <td>".$value["brand"]."</td>
-                    <td>".$value["car_type"]."</td>
-                    <td>".$value["body_type"]."</td>
-                    <td>".$value["fuel"]."</td>
-                    <td>".$value["color"]."</td>
-                    <td>".$value["cubic"]."</td>
-                    <td>".$value["hp"]."</td>
-                    <td>".$value["mileage"]."</td>
-                    <td>".$value["updated"]."</td>
+                    <td class='align-middle'>".$value["brand"]."</td>
+                    <td class='align-middle'>".$value["car_type"]."</td>
+                    <td class='align-middle'>".$value["body_type"]."</td>
+                    <td class='align-middle'>".$value["fuel"]."</td>
+                    <td class='align-middle'>".$value["color"]."</td>
+                    <td class='align-middle'>".$value["cubic"]."</td>
+                    <td class='align-middle'>".$value["hp"]."</td>
+                    <td class='align-middle'>".$value["mileage"]."</td>
+                    <td class='align-middle'>".$value["updated"]."</td>
+                    <td class='text-right align-middle'>
+                        <form>
+                            <button type='submit' name='edit' class='btn btn-primary' value='".$value["id"]."'>
+                                <i class='fa fa-pencil'></i>
+                            </button>                        
+                            <button type='submit' name='delete' class='btn btn-danger' value='".$value["id"]."'>
+                                <i class='fa fa-trash-o'></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>";
         }
 

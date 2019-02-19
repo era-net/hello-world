@@ -32,7 +32,7 @@
 
 
     <div class="container">
-  <div class="py-5">
+  <div class="py-1">
     <h2>Car registration form</h2>
 
     <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
@@ -43,13 +43,31 @@
       require "nconnect.php";
 
       if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        if (!empty($_GET['brand']) && !empty($_GET['car_type']) && !empty($_GET['body_type']) && !empty($_GET['fuel'])) {
-          require "ncreate.php";
+        if (!empty($_GET['brand']) && !empty($_GET['car_type']) && !empty($_GET['body_type']) && !empty($_GET['fuel']) && empty($_GET['delete'])) 
+        {
+          // If data for new entry provided
+          if(!empty($_GET['update'])) 
+          {
+            require "nupdate.php";
+          } 
+          else 
+          {
+            require "ncreate.php";
+          }
+        } 
+        else if(!empty($_GET['delete'])) 
+        {
+          // Else if delete button pressed
+          require "ndelete.php";
+        } 
+        else if(!empty($_GET['edit'])) 
+        {
+          // Else if edit button pressed
+          require "nedit.php";
         }
       }
 
-      require "nread.php";
-      
+
     ?>
 
 
@@ -58,37 +76,34 @@
   <div class="row">
 
     <div class="col-md-12">
-      <h4 class="mb-3">Basic data</h4>
+      <h4 class="mb-3">Basic data of <?=@$car['brand']?> <?=@$car['car_type']?> #<?=@$car['id']?></h4>
       <form class="needs-validation" novalidate action="ncars.php" method="GET">
 
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="brand">Brand * </label>
-            <input type="text" class="form-control" id="brand" placeholder="e.g. Audi" value="" required name="brand">
+            <input type="text" class="form-control" id="brand" placeholder="e.g. Audi" value="<?=@$car['brand']?>" required name="brand">
             <div class="invalid-feedback">
               Valid brand is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="car_type">Car type *</label>
-            <input type="text" class="form-control" id="car_type" placeholder="e.g. A6" value="" required name="car_type">
+            <input type="text" class="form-control" id="car_type" placeholder="e.g. A6" value="<?=@$car['car_type']?>" required name="car_type">
             <div class="invalid-feedback">
               Valid car type is required.
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="body_type">Body type * </label>
-            <input type="text" class="form-control" id="body_type" placeholder="e.g. Coupe" value="" required name="body_type">
+            <input type="text" class="form-control" id="body_type" placeholder="e.g. Coupe" value="<?=@$car['body_type']?>" required name="body_type">
             <div class="invalid-feedback">
               Valid body type is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="fuel">Fuel *</label>
-            <input type="text" class="form-control" id="fuel" placeholder="e.g. Diesel" value="" required name="fuel">
+            <input type="text" class="form-control" id="fuel" placeholder="e.g. Diesel" value="<?=@$car['fuel']?>" required name="fuel">
             <div class="invalid-feedback">
               Valid car fuel is required.
             </div>
@@ -96,44 +111,42 @@
         </div> 
 
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="color">Color</label>
-            <input type="text" class="form-control" id="color" placeholder="e.g. Black" value="" required name="color">
+            <input type="text" class="form-control" id="color" placeholder="e.g. Black" value="<?=@$car['color']?>" required name="color">
             <div class="invalid-feedback">
               Valid car color is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="cubic">Cubic capacity</label>
-            <input type="text" class="form-control" id="cubic" placeholder="e.g. 3000" value="" required name="cubic">
+            <input type="text" class="form-control" id="cubic" placeholder="e.g. 3000" value="<?=@$car['cubic']?>" required name="cubic">
             <div class="invalid-feedback">
               Valid cubic capacity is required.
             </div>
           </div>
-        </div>  
-        
-        <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="hp">Horse power</label>
-            <input type="text" class="form-control" id="hp" placeholder="e.g. 180" value="" required name="hp">
+            <input type="text" class="form-control" id="hp" placeholder="e.g. 180" value="<?=@$car['hp']?>" required name="hp">
             <div class="invalid-feedback">
               Valid car hp is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="mileage">Mileage</label>
-            <input type="text" class="form-control" id="mileage" placeholder="e.g. 15659" value="" required name="mileage">
+            <input type="text" class="form-control" id="mileage" placeholder="e.g. 15659" value="<?=@$car['mileage']?>" required name="mileage">
             <div class="invalid-feedback">
               Valid mileage capacity is required.
             </div>
           </div>
         </div>    
-
+        <button class="btn btn-primary btn-lg btn-block" type="submit" name="update" value="<?=@$car['id']?>">Continue the registration</button>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue the registration</button>
       </form>
     </div>
   </div>
+
+  <?php require "nread.php"; ?>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017-2018 Company Name</p>
