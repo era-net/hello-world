@@ -1,0 +1,42 @@
+body {
+	margin: 50px 250px;
+	font-family: Helvetica, arial, sans-serif;
+}
+
+.main-table {
+	width: 40%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.main-table td {
+	text-align: center;
+}
+
+.tr-td:hover {
+	cursor: pointer;
+	background-color: lightgrey;
+}
+
+select {
+	background-color: white;
+	width: 200px;
+	height: 25px;
+	border: 1px solid grey;
+	margin-top: 50px;
+}
+
+select:hover {
+	cursor: pointer;
+}
+
+a {
+	color: royalblue;
+	text-decoration: none;
+}
+
+a:hover {
+	color: royalblue;
+	text-decoration: underline;
+}

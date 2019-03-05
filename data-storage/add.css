@@ -1,0 +1,30 @@
+body {
+	margin: 50px 250px;
+	font-family: Helvetica, arial, sans-serif;
+}
+
+.main-table {
+	width: 25%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.main-table td {
+	text-align: center;
+}
+
+.tr-td:hover {
+	cursor: pointer;
+	background-color: lightgrey;
+}
+
+a {
+	color: royalblue;
+	text-decoration: none;
+}
+
+a:hover {
+	color: royalblue;
+	text-decoration: underline;
+}

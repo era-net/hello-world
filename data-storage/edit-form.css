@@ -1,0 +1,22 @@
+body {
+	margin: 50px 250px;
+	font-family: Helvetica, arial, sans-serif;
+}
+
+a {
+	color: royalblue;
+	text-decoration: none;
+}
+
+a:hover {
+	color: royalblue;
+	text-decoration: underline;
+}
+
+.del-btn {
+	color: #AF5050;
+}
+
+.del-btn:hover {
+	cursor: pointer;
+}
