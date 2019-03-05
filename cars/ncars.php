@@ -20,13 +20,15 @@
         crossorigin="anonymous">
 
     <!-- Bootstrap JavaScript inkl. jQuery und Bootstrap.js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+
+    
 </head>
 <body class="bg-light">
 
@@ -77,7 +79,7 @@
 
     <div class="col-md-12">
       <h4 class="mb-3">Basic data of <?=@$car['brand']?> <?=@$car['car_type']?> #<?=@$car['id']?></h4>
-      <form class="needs-validation" novalidate action="ncars.php" method="GET">
+      <form class="needs-validation" novalidate action="ncars.php" method="GET" id="car_form">
 
         <div class="row">
           <div class="col-md-3 mb-3">
@@ -140,13 +142,20 @@
             </div>
           </div>
         </div>    
-        <button class="btn btn-primary btn-lg btn-block" type="submit" name="update" value="<?=@$car['id']?>">Continue the registration</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" name="update" value="<?=@$car['id']?>">Continue the registration PHP</button>
+        <button class="btn btn-warning btn-lg btn-block" type="button" name="update" id="update_button">Continue the registration JS</button>
         <hr class="mb-4">
       </form>
     </div>
   </div>
 
-  <?php require "nread.php"; ?>
+  <?php //require "nread.php"; ?>
+
+  <div class="row">
+    <div class="col-md-12" id="car_table">
+      
+    </div>
+  </div>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017-2018 Company Name</p>
